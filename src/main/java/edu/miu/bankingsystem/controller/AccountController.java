@@ -1,0 +1,45 @@
+package edu.miu.bankingsystem.controller;
+
+import edu.miu.bankingsystem.domian.Account;
+import edu.miu.bankingsystem.service.AccountService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/accounts")
+@CrossOrigin
+public class AccountController {
+
+    private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    @GetMapping
+    public List<Account> getAllAccounts(){
+        return accountService.getAllAccounts();
+    }
+    @GetMapping("/{id}")
+
+    public Account getAccountById(@PathVariable  long id){
+        return accountService.getAnAccountByID(id);
+    }
+
+    @PostMapping
+    public void saveAnAccount(@RequestBody Account account){
+        accountService.saveAnAccount(account);
+    }
+
+    @DeleteMapping("/{id}")
+
+    public void deleteAnAccount(@PathVariable long id){
+        accountService.deleteAnAccount(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
+        accountService.updateAnAccount(id, account);
+    }
+}
