@@ -22,7 +22,8 @@ public class Account {
     private String accountType;
 
     @ManyToOne
-    private Customer customer;
+    @JoinColumn(name = "users_id")
+    private Users users;
 
     @OneToMany(mappedBy = "account" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Transaction> transactions;

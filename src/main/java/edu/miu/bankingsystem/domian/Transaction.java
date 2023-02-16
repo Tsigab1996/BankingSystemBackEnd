@@ -17,10 +17,10 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate transactionDate;
-    private LocalDateTime transactionTime;
+    //private LocalDateTime transactionTime;
     private double amount;
     private String transactionType;
-//    private double updatedBalance;
+
 
     @ManyToOne
     private Account account;
