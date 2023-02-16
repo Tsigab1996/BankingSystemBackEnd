@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/customers")
+@RequestMapping("api/v1/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -23,7 +23,7 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
 
     public Customer getACustomerById(@PathVariable long id){
         return customerService.getACustomer(id);
@@ -34,12 +34,12 @@ public class CustomerController {
         customerService.saveACustomer(customer);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteACustomer(@PathVariable long id){
         customerService.deleteACustomer(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public void updateACustomer(@PathVariable long id, @RequestBody Customer customer){
         customerService.updateACustomer(id, customer);
     }

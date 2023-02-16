@@ -23,6 +23,6 @@ public class Customer {
     @OneToOne
     private Users user;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Account> accounts;
 }

@@ -22,7 +22,7 @@ public class Users {
     @ManyToOne
     private Role roles;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Customer customer;
 
 

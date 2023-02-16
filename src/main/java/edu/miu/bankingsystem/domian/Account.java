@@ -24,7 +24,7 @@ public class Account {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany(mappedBy = "account" )
+    @OneToMany(mappedBy = "account" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Transaction> transactions;
 
 }
