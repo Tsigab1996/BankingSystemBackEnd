@@ -1,6 +1,7 @@
 package edu.miu.bankingsystem.controller;
 
-import edu.miu.bankingsystem.domian.User;
+
+import edu.miu.bankingsystem.domian.Users;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,19 +18,19 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public List<Users> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
 
-    public User getAUserById(@PathVariable long id){
+    public Users getAUserById(@PathVariable long id){
         return userService.getAUserById(id);
     }
 
     @PostMapping
 
-    public void saveAUser(@RequestBody User user){
+    public void saveAUser(@RequestBody Users user){
         userService.saveAUser(user);
     }
     @DeleteMapping("/{id}")
@@ -40,7 +41,7 @@ public class UserController {
 
     @PutMapping("{id}")
 
-    public void updateAUser(@PathVariable long id, @RequestBody User user){
+    public void updateAUser(@PathVariable long id, @RequestBody Users user){
         userService.updateAUser(id, user);
     }
 }

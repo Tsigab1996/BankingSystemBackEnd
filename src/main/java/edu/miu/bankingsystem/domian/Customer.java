@@ -21,7 +21,7 @@ public class Customer {
     private String phoneNumber;
 
     @OneToOne
-    private User user;
+    private Users user;
 
     @OneToMany(mappedBy = "customer")
     private List<Account> accounts;

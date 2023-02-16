@@ -36,7 +36,10 @@ public class TransactionServiceImp implements TransactionService {
     }
 
     @Override
-    public void updateATransaction(long id, Transaction transaction) {
-   transactionRepo.save(transaction);
+    public Transaction updateATransaction(long id, Transaction transaction) {
+     Transaction trans= new Transaction();
+     trans.setId(id);
+     Transaction newTrans= transactionRepo.save(trans);
+     return newTrans;
     }
 }

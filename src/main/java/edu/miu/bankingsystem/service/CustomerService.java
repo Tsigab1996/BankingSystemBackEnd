@@ -9,5 +9,5 @@ public interface CustomerService {
     public Customer getACustomer(long id);
     public void saveACustomer(Customer customer);
     public void deleteACustomer(long id);
-    public void updateACustomer(long id, Customer customer);
+    public Customer updateACustomer(long id, Customer customer);
 }

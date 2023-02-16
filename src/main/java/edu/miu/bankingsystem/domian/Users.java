@@ -12,18 +12,15 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String email;
     private String password;
 
-    @ManyToMany
-    @JoinTable(name = "USER_ROLES", joinColumns = {
-            @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
-            @JoinColumn(name = "ROLE_ID") })
-          private Set<Role> roles;
+    @ManyToOne
+    private Role roles;
 
     @OneToOne(mappedBy = "user")
     private Customer customer;

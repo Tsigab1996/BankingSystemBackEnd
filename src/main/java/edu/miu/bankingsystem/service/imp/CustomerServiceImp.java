@@ -36,7 +36,11 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public void updateACustomer(long id, Customer customer) {
-    customerRepo.save(customer);
+    public Customer updateACustomer(long id, Customer customer) {
+     Customer c= new Customer();
+     c.setId(id);
+     Customer newCustomer= customerRepo.save(c);
+     return newCustomer;
+
     }
 }

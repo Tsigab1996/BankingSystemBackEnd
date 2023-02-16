@@ -35,7 +35,10 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public void updateAnAccount(long id, Account account) {
-     accountRepo.save(account);
+    public Account updateAnAccount(long id, Account account) {
+     Account a= new Account();
+     a.setId(id);
+     Account acct= accountRepo.save(a);
+     return acct;
     }
 }
