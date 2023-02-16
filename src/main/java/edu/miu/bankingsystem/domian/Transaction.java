@@ -20,7 +20,7 @@ public class Transaction {
     private LocalDateTime transactionTime;
     private double amount;
     private String transactionType;
-    private double updatedBalance;
+//    private double updatedBalance;
 
     @ManyToOne
     private Account account;

@@ -19,8 +19,8 @@ public class Users {
     private String email;
     private String password;
 
-    @ManyToOne
-    private Role roles;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Role role;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Customer customer;
