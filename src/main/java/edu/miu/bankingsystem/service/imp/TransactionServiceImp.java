@@ -37,9 +37,24 @@ public class TransactionServiceImp implements TransactionService {
 
     @Override
     public Transaction updateATransaction(long id, Transaction transaction) {
-     Transaction trans= new Transaction();
-     trans.setId(id);
+     Transaction trans= getATransactionById(id);
+     trans.setTransactionType(transaction.getTransactionType());
+     trans.setTransactionDate(transaction.getTransactionDate());
+     trans.setAccount(transaction.getAccount());
+     trans.setAmount(transaction.getAmount());
      Transaction newTrans= transactionRepo.save(trans);
      return newTrans;
     }
+
+    @Override
+    public List<Transaction> findAllByAccount_Id(long id) {
+        return transactionRepo.findAllByAccount_Id(id);
+    }
+
+    @Override
+    public List<Transaction> getAllTransactionsByUserByAccount(long a, long b) {
+        return transactionRepo.getAllTransactionsByUserByAccount(a,b);
+    }
+
+
 }

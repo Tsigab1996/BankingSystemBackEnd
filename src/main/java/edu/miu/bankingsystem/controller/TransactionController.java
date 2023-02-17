@@ -43,4 +43,14 @@ public class TransactionController {
     public void updateATransaction(@PathVariable long id, @RequestBody Transaction transaction){
         transactionService.updateATransaction(id, transaction);
     }
+
+//    @GetMapping("/{id}viewTransactions")
+//    public List<Transaction> getAllTransactionsByAccountID(@PathVariable long id){
+//        return transactionService.findAllByAccount_Id(id);
+//    }
+
+    @GetMapping("/{a}/account/{b}/viewTransactions")
+    public List<Transaction> getAllTransactionsByUserByAccount(@PathVariable long a, @PathVariable long b){
+        return transactionService.getAllTransactionsByUserByAccount(a,b);
+    }
 }

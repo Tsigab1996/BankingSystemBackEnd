@@ -13,4 +13,10 @@ public interface UserService {
     public void saveAUser(Users user);
     public void deleteAUser(long id);
     public Users updateAUser(long id, Users user);
+
+
+    public Double viewBalance(long id);
+    public double viewSavingOrCheckingBalance(long id, String accountType);
+
+
 }
