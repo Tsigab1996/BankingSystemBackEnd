@@ -13,4 +13,5 @@ public interface UserService {
     public void saveAUser(Users user);
     public void deleteAUser(long id);
     public Users updateAUser(long id, Users user);
+    public Users getAUserBalanceById(long id);
 }

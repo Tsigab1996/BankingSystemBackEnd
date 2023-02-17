@@ -1,19 +1,26 @@
 package edu.miu.bankingsystem.service.imp;
 
 
+import edu.miu.bankingsystem.domian.Account;
 import edu.miu.bankingsystem.domian.Users;
+import edu.miu.bankingsystem.repository.AccountRepo;
 import edu.miu.bankingsystem.repository.UserRepo;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImp implements UserService {
 
     private final UserRepo userRepo;
+    private final AccountRepo accountRepo;
+    //Optional<Account> acc= new Account();
 
-    public UserServiceImp(UserRepo userRepo) {
+    public UserServiceImp(UserRepo userRepo, AccountRepo accountRepo) {
         this.userRepo = userRepo;
+        this.accountRepo = accountRepo;
     }
 
 
@@ -22,9 +29,22 @@ public class UserServiceImp implements UserService {
         return userRepo.findAll();
     }
 
+
+        @Override
+        public Users getAUserById(long id) {
+            return userRepo.findById(id).get();
+    }
+
     @Override
-    public Users getAUserById(long id) {
-        return userRepo.findById(id).get();
+    public Users getAUserBalanceById(long id) {
+        Users user=userRepo.findById(id).orElse(null);
+        if (user != null) {
+            Optional<Account> account = accountRepo.findById(id);
+            //acc= account;
+//            user.setAccounts(account.s);
+            account.stream().map(x->x.getBalance());
+        }
+        return user;
     }
 
     @Override

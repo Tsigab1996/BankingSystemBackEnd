@@ -44,4 +44,10 @@ public class UserController {
     public void updateAUser(@PathVariable long id, @RequestBody Users user){
         userService.updateAUser(id, user);
     }
+
+    @GetMapping("/users/{id}")
+    public Users getUserBalanceById(@PathVariable Long id) {
+        Users users = userService.getAUserBalanceById(id);
+        return users;
+    }
 }
