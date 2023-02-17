@@ -1,7 +1,9 @@
 package edu.miu.bankingsystem.controller;
 
 import edu.miu.bankingsystem.domian.Account;
+import edu.miu.bankingsystem.domian.Transaction;
 import edu.miu.bankingsystem.service.AccountService;
+import java.time.LocalDate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +27,22 @@ public class AccountController {
 
     public Account getAccountById(@PathVariable  long id){
         return accountService.getAnAccountByID(id);
+    }
+    @PostMapping("/withdraw/{accountId}/{amount}")
+    public Account withdrawFromAccountById(@PathVariable  long accountId,@PathVariable Double amount){
+        Account a = accountService.getAnAccountByID(accountId);
+        a.setBalance(a.getBalance() - amount);
+        a.getTransactions().add(new Transaction(null, LocalDate.now(), amount, "withdraw", a));
+        accountService.saveAnAccount(a);
+        return a;
+    }
+    @PostMapping("/deposit/{accountId}/{amount}")
+    public Account depositIntoAccountById(@PathVariable  long accountId,@PathVariable Double amount){
+        Account a = accountService.getAnAccountByID(accountId);
+        a.setBalance(a.getBalance() + amount);
+        a.getTransactions().add(new Transaction(null, LocalDate.now(), amount, "deposit", a));
+        accountService.saveAnAccount(a);
+        return a;
     }
 
     @PostMapping

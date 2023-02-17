@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private LocalDate transactionDate;
     //private LocalDateTime transactionTime;
     private double amount;
