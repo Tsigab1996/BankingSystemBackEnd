@@ -18,28 +18,36 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<Account> getAllAccounts(){
+    public List<Account> getAllAccounts() {
         return accountService.getAllAccounts();
     }
+
     @GetMapping("/get/{id}")
 
-    public Account getAccountById(@PathVariable  long id){
+    public Account getAccountById(@PathVariable long id) {
         return accountService.getAnAccountByID(id);
     }
 
     @PostMapping
-    public void saveAnAccount(@RequestBody Account account){
+    public void saveAnAccount(@RequestBody Account account) {
         accountService.saveAnAccount(account);
     }
 
     @DeleteMapping("/delete/{id}")
 
-    public void deleteAnAccount(@PathVariable long id){
+    public void deleteAnAccount(@PathVariable long id) {
         accountService.deleteAnAccount(id);
     }
 
     @PutMapping("/update/{id}")
-    public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
+    public void updateAnAccount(@PathVariable long id, @RequestBody Account account) {
         accountService.updateAnAccount(id, account);
     }
+
+    @GetMapping("/viewBalance/{customerID}")
+    public Double viewBalance(@PathVariable long customerID){
+       return accountService.viewBalance(customerID);
+
+    }
+
 }

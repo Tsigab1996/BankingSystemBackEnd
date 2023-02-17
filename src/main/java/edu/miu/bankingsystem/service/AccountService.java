@@ -10,4 +10,6 @@ public interface AccountService {
   public void saveAnAccount(Account account);
   public void deleteAnAccount(long id);
   public Account updateAnAccount(long id, Account account);
+
+  public Double viewBalance(long id);
 }

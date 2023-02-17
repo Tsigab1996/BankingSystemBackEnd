@@ -44,4 +44,6 @@ public class UserServiceImp implements UserService {
     Users newUser= userRepo.save(u);
     return newUser;
     }
+
+
 }
