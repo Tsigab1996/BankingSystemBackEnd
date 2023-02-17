@@ -11,4 +11,5 @@ public interface TransactionService {
     public void saveATransaction(Transaction transaction);
     public void deleteATransaction(long id);
     public Transaction updateATransaction(long id, Transaction transaction);
+    public List<Transaction> findAllByAccount_Id(long id);
 }

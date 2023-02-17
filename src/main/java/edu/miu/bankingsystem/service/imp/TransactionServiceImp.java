@@ -42,4 +42,9 @@ public class TransactionServiceImp implements TransactionService {
      Transaction newTrans= transactionRepo.save(trans);
      return newTrans;
     }
+
+    @Override
+    public List<Transaction> findAllByAccount_Id(long id) {
+        return transactionRepo.findAllByAccount_Id(id);
+    }
 }

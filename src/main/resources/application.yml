@@ -2,9 +2,9 @@ spring:
   application:
     name: BankingSystem
   datasource:
-    password: 1996
+    password: admin
 
-    url: jdbc:postgresql://localhost:5432/BankingSystem
+    url: jdbc:postgresql://localhost:5432/BankingSystems
 
     username: postgres
   jpa:

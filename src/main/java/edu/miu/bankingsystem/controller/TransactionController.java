@@ -21,6 +21,11 @@ public class TransactionController {
         return transactionService.getAllTransactions();
     }
 
+    @GetMapping("/gettransaction/account/{id}")
+    public List<Transaction> getAllTransactionsByAccount(@PathVariable long id){
+        return transactionService.findAllByAccount_Id(id);
+    }
+
     @GetMapping("/get/{id}")
     public Transaction getATransactionById(@PathVariable long id){
         return transactionService.getATransactionById(id);
