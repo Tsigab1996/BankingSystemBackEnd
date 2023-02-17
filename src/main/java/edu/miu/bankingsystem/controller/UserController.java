@@ -50,7 +50,7 @@ public class UserController {
         return userService.viewBalance(customerID);
 
     }
-    @GetMapping("/viewCheckingOrCheckingBalance{customer_Id}")
+    @GetMapping("/viewSavingOrCheckingBalance{customer_Id}")
     public double viewSavingOrCheckingBalance(@PathVariable long id, @RequestParam(value = "accountType") String accountType){
         return userService.viewSavingOrCheckingBalance(id, accountType);
     }
