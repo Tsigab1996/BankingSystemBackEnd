@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.repository;
 
-import edu.miu.bankingsystem.domian.Account;
+import edu.miu.bankingsystem.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

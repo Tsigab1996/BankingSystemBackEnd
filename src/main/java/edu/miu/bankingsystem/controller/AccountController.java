@@ -1,7 +1,7 @@
 package edu.miu.bankingsystem.controller;
 
-import edu.miu.bankingsystem.domian.Account;
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Account;
+import edu.miu.bankingsystem.domain.Transaction;
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 

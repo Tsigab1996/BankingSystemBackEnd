@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.service;
 
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Transaction;
 
 import java.util.List;
 

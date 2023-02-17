@@ -1,14 +1,11 @@
 package edu.miu.bankingsystem.service.imp;
 
-import edu.miu.bankingsystem.domian.Account;
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Account;
 import edu.miu.bankingsystem.repository.AccountRepo;
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AccountServiceImp implements AccountService {
