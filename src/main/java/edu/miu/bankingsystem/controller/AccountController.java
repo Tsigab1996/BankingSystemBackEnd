@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.controller;
 
-import edu.miu.bankingsystem.domian.Account;
+import edu.miu.bankingsystem.domain.Account;
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,4 +42,5 @@ public class AccountController {
     public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
         accountService.updateAnAccount(id, account);
     }
+//    public Account WithdrawBalanceBYId(Long id)
 }

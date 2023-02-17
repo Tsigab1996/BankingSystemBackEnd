@@ -1,7 +1,7 @@
 package edu.miu.bankingsystem.service.imp;
 
 
-import edu.miu.bankingsystem.domian.Users;
+import edu.miu.bankingsystem.domain.Users;
 import edu.miu.bankingsystem.repository.UserRepo;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.stereotype.Service;
