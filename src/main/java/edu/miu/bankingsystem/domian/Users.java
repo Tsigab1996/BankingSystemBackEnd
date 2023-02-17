@@ -6,23 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-
-public class Customer {
+public class Users {
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    private  String phoneNumber;
+    private String email;
+    private String password;
 
-    @OneToOne
-    private User user;
+    @ManyToOne
+    private Role role;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Account> accounts;
+
+
 }

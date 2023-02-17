@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/accounts")
+@RequestMapping("api/v1/accounts")
 @CrossOrigin
 public class AccountController {
 
@@ -21,7 +21,7 @@ public class AccountController {
     public List<Account> getAllAccounts(){
         return accountService.getAllAccounts();
     }
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
 
     public Account getAccountById(@PathVariable  long id){
         return accountService.getAnAccountByID(id);
@@ -32,13 +32,13 @@ public class AccountController {
         accountService.saveAnAccount(account);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
 
     public void deleteAnAccount(@PathVariable long id){
         accountService.deleteAnAccount(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
         accountService.updateAnAccount(id, account);
     }

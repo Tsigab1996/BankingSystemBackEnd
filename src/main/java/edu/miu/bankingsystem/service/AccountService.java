@@ -9,5 +9,5 @@ public interface AccountService {
   public Account getAnAccountByID(long id);
   public void saveAnAccount(Account account);
   public void deleteAnAccount(long id);
-  public void updateAnAccount(long id, Account account);
+  public Account updateAnAccount(long id, Account account);
 }

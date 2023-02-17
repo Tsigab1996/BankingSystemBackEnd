@@ -1,6 +1,7 @@
 package edu.miu.bankingsystem.service.imp;
 
-import edu.miu.bankingsystem.domian.User;
+
+import edu.miu.bankingsystem.domian.Users;
 import edu.miu.bankingsystem.repository.UserRepo;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.stereotype.Service;
@@ -17,17 +18,17 @@ public class UserServiceImp implements UserService {
 
 
     @Override
-    public List<User> getAllUsers() {
+    public List<Users> getAllUsers() {
         return userRepo.findAll();
     }
 
     @Override
-    public User getAUserById(long id) {
+    public Users getAUserById(long id) {
         return userRepo.findById(id).get();
     }
 
     @Override
-    public void saveAUser(User user) {
+    public void saveAUser(Users user) {
      userRepo.save(user);
     }
 
@@ -37,7 +38,10 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void updateAUser(long id, User user) {
-    userRepo.save(user);
+    public Users updateAUser(long id, Users user) {
+    Users u= new Users();
+    u.setId(id);
+    Users newUser= userRepo.save(u);
+    return newUser;
     }
 }
