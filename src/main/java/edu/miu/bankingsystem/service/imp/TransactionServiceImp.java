@@ -46,10 +46,7 @@ public class TransactionServiceImp implements TransactionService {
      return newTrans;
     }
 
-    @Override
-    public List<Transaction> findAllByAccount_Id(long id) {
-        return transactionRepo.findAllByAccount_Id(id);
-    }
+
 
     @Override
     public List<Transaction> getAllTransactionsByUserByAccount(long a, long b) {

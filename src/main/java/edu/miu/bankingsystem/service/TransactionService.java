@@ -12,7 +12,7 @@ public interface TransactionService {
     public void deleteATransaction(long id);
     public Transaction updateATransaction(long id, Transaction transaction);
 
-    public List<Transaction> findAllByAccount_Id(long id);
+//    public List<Transaction> findAllByAccount_Id(long id);
 
     public List<Transaction> getAllTransactionsByUserByAccount(long a, long b);
 }
