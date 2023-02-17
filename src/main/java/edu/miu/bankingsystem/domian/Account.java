@@ -1,5 +1,7 @@
 package edu.miu.bankingsystem.domian;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,9 +25,11 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
+    @JsonBackReference
     private Users users;
 
     @OneToMany(mappedBy = "account" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Transaction> transactions;
 
 }
