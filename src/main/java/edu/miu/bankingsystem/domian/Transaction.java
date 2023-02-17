@@ -1,5 +1,6 @@
 package edu.miu.bankingsystem.domian;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,5 +24,6 @@ public class Transaction {
 
 
     @ManyToOne
+    @JsonIgnoreProperties("transactions")
     private Account account;
 }

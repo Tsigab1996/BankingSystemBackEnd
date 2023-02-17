@@ -1,5 +1,6 @@
 package edu.miu.bankingsystem.domian;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Users {
     private Role role;
 
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("users")
     private List<Account> accounts;
 
 

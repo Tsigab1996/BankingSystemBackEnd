@@ -19,7 +19,9 @@ public class AccountController {
 
     @GetMapping
     public List<Account> getAllAccounts(){
-        return accountService.getAllAccounts();
+        List<Account> a = accountService.getAllAccounts();
+        System.out.println("was here " + a.size());
+        return a;
     }
     @GetMapping("/get/{id}")
 

@@ -1,5 +1,6 @@
 package edu.miu.bankingsystem.domian;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,9 +24,11 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
+    @JsonIgnoreProperties("accounts")
     private Users users;
 
     @OneToMany(mappedBy = "account" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("account")
     private List<Transaction> transactions;
 
 }
