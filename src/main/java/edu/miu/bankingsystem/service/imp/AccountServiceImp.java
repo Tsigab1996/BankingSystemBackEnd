@@ -64,7 +64,7 @@ public class AccountServiceImp implements AccountService {
     public Account withdrawFromAccountById(long id, double amount) {
         Account a = getAnAccountByID(id);
         a.setBalance(a.getBalance() - amount);
-        a.getTransactions().add(new Transaction( value,LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "withdraw", a));
+        a.getTransactions().add(new Transaction( value,LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "withdraw", a, a.getBalance()));
         value++;
         saveAnAccount(a);
         return a;
@@ -75,7 +75,7 @@ public class AccountServiceImp implements AccountService {
 
         Account a = getAnAccountByID(id);
         a.setBalance(a.getBalance() + amount);
-        a.getTransactions().add(new Transaction(value, LocalDate.now(),  LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "deposit", a));
+        a.getTransactions().add(new Transaction(value, LocalDate.now(),  LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "deposit", a, a.getBalance()));
         value++;
         saveAnAccount(a);
         return a;
