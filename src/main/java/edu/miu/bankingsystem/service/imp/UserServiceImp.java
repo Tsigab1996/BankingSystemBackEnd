@@ -1,15 +1,14 @@
 package edu.miu.bankingsystem.service.imp;
 
 
-import edu.miu.bankingsystem.domian.Account;
-import edu.miu.bankingsystem.domian.Users;
+import edu.miu.bankingsystem.domain.Account;
+import edu.miu.bankingsystem.domain.Users;
 import edu.miu.bankingsystem.repository.UserRepo;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Service
 public class UserServiceImp implements UserService {

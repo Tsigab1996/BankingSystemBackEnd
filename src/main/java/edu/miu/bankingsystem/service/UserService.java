@@ -2,7 +2,7 @@ package edu.miu.bankingsystem.service;
 
 
 
-import edu.miu.bankingsystem.domian.Users;
+import edu.miu.bankingsystem.domain.Users;
 
 import java.util.List;
 

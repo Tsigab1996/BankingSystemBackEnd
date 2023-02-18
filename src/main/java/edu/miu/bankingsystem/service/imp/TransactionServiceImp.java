@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.service.imp;
 
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Transaction;
 import edu.miu.bankingsystem.repository.TransactionRepo;
 import edu.miu.bankingsystem.service.TransactionService;
 import org.springframework.stereotype.Service;
