@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +18,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate transactionDate;
+    private LocalTime transactionTime;
     private double amount;
     private String transactionType;
 
@@ -24,6 +26,8 @@ public class Transaction {
     @ManyToOne
     @JsonBackReference
     private Account account;
+
+    private Double transactionBalance;
 
     //This is a parameterized constructor.....
     public Transaction( LocalDate local, Double amount, String withdraw, Account a) {
