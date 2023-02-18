@@ -17,7 +17,6 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate transactionDate;
-    //private LocalDateTime transactionTime;
     private double amount;
     private String transactionType;
 
@@ -25,4 +24,12 @@ public class Transaction {
     @ManyToOne
     @JsonBackReference
     private Account account;
+
+    //This is a parameterized constructor.....
+    public Transaction( LocalDate local, Double amount, String withdraw, Account a) {
+        this.transactionDate=local;
+        this.amount=amount;
+        this.transactionType=withdraw;
+        this.account=a;
+    }
 }

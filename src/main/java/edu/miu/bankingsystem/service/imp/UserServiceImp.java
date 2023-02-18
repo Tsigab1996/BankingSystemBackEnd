@@ -1,12 +1,18 @@
 package edu.miu.bankingsystem.service.imp;
 
 
+
+import edu.miu.bankingsystem.domain.Account;
 import edu.miu.bankingsystem.domain.Users;
+
 import edu.miu.bankingsystem.repository.UserRepo;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -39,9 +45,37 @@ public class UserServiceImp implements UserService {
 
     @Override
     public Users updateAUser(long id, Users user) {
-    Users u= new Users();
-    u.setId(id);
+    Users u=  getAUserById(id);
+    u.setFirstName(user.getFirstName());
+    u.setLastName(user.getLastName());
+    u.setEmail(user.getEmail());
+    u.setPassword(user.getPassword());
+    u.setPhoneNumber(user.getPhoneNumber());
     Users newUser= userRepo.save(u);
     return newUser;
     }
+
+    @Override
+    public Double viewBalance(long id) {
+        Optional<Users> c = userRepo.findById(id);
+        List<Account> customerAcc = c.get().getAccounts();
+        double sumBalance= customerAcc.stream().map(b->b.getBalance()).mapToDouble(s -> s).sum();
+        return sumBalance;
+    }
+
+    @Override
+    public double viewSavingOrCheckingBalance(long id, String accountType) {
+        double totalSavingBalance= 0;
+        Optional<Users> c = userRepo.findById(id);
+        List<Account> customerAcc = c.get().getAccounts();
+        for (int i = 0; i < customerAcc.size(); i++) {
+            if(customerAcc.get(i).getAccountType().equals(accountType)){
+                totalSavingBalance= customerAcc.get(i).getBalance();
+                break;
+            }
+        }
+        return totalSavingBalance;
+    }
+
+
 }

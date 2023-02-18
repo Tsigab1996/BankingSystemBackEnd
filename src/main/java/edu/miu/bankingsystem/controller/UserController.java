@@ -22,7 +22,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("get/{id}")
+    @GetMapping("/get/{id}")
 
     public Users getAUserById(@PathVariable long id){
         return userService.getAUserById(id);
@@ -43,5 +43,15 @@ public class UserController {
 
     public void updateAUser(@PathVariable long id, @RequestBody Users user){
         userService.updateAUser(id, user);
+    }
+
+    @GetMapping("/viewBalance/{customerID}")
+    public Double viewBalance(@PathVariable long customerID){
+        return userService.viewBalance(customerID);
+
+    }
+    @GetMapping("/viewSavingOrCheckingBalance{customer_Id}")
+    public double viewSavingOrCheckingBalance(@PathVariable long id, @RequestParam(value = "accountType") String accountType){
+        return userService.viewSavingOrCheckingBalance(id, accountType);
     }
 }
