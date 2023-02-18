@@ -3,16 +3,27 @@ package edu.miu.bankingsystem.service.imp;
 
 import edu.miu.bankingsystem.domain.Account;
 
+
+import edu.miu.bankingsystem.domain.Transaction;
+
 import edu.miu.bankingsystem.repository.AccountRepo;
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AccountServiceImp implements AccountService {
+    LocalTime now = LocalTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    String formattedTime = now.format(formatter);
+
+    public static long value=1;
+
     private final AccountRepo accountRepo;
 
 
@@ -47,6 +58,27 @@ public class AccountServiceImp implements AccountService {
      a.setBalance(account.getBalance());
      Account acct= accountRepo.save(a);
      return acct;
+    }
+
+    @Override
+    public Account withdrawFromAccountById(long id, double amount) {
+        Account a = getAnAccountByID(id);
+        a.setBalance(a.getBalance() - amount);
+        a.getTransactions().add(new Transaction( value,LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "withdraw", a));
+        value++;
+        saveAnAccount(a);
+        return a;
+    }
+
+    @Override
+    public Account depositIntoAccountById(long id, double amount) {
+
+        Account a = getAnAccountByID(id);
+        a.setBalance(a.getBalance() + amount);
+        a.getTransactions().add(new Transaction(value, LocalDate.now(),  LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "deposit", a));
+        value++;
+        saveAnAccount(a);
+        return a;
     }
 
 }

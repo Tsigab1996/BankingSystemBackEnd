@@ -1,9 +1,10 @@
 package edu.miu.bankingsystem.controller;
 
 
+
 import edu.miu.bankingsystem.domain.Account;
 
-import edu.miu.bankingsystem.domain.Transaction;
+
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,23 +47,34 @@ public class AccountController {
     public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
         accountService.updateAnAccount(id, account);
     }
+    @PostMapping("/withdraw/{id}")
+    public Account withdrawFromAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
+        return accountService.withdrawFromAccountById(id, amount);
+    }
+    @PostMapping("/deposit/{id}")
+    public Account depositIntoAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
+        return accountService.depositIntoAccountById(id,amount);
 
-    @PostMapping("/withdraw/{accountId}/{amount}")
-    public Account withdrawFromAccountById(@PathVariable  long accountId,@PathVariable Double amount){
-        Account a = accountService.getAnAccountByID(accountId);
-        a.setBalance(a.getBalance() - amount);
-        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "withdraw", a));
-        accountService.saveAnAccount(a);
-        return a;
     }
-    @PostMapping("/deposit/{accountId}/{amount}")
-    public Account depositIntoAccountById(@PathVariable  long accountId,@PathVariable Double amount){
-        Account a = accountService.getAnAccountByID(accountId);
-        a.setBalance(a.getBalance() + amount);
-        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "deposit", a));
-        accountService.saveAnAccount(a);
-        return a;
-    }
+//<<<<<<< HEAD
+//
+//    @PostMapping("/withdraw/{accountId}/{amount}")
+//    public Account withdrawFromAccountById(@PathVariable  long accountId,@PathVariable Double amount){
+//        Account a = accountService.getAnAccountByID(accountId);
+//        a.setBalance(a.getBalance() - amount);
+//        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "withdraw", a));
+//        accountService.saveAnAccount(a);
+//        return a;
+//    }
+//    @PostMapping("/deposit/{accountId}/{amount}")
+//    public Account depositIntoAccountById(@PathVariable  long accountId,@PathVariable Double amount){
+//        Account a = accountService.getAnAccountByID(accountId);
+//        a.setBalance(a.getBalance() + amount);
+//        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "deposit", a));
+//        accountService.saveAnAccount(a);
+//        return a;
+//=======
+
 
 
 }

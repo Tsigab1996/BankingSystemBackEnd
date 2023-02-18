@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/transactions")
+@CrossOrigin
 public class TransactionController {
 
     private final TransactionService transactionService;
