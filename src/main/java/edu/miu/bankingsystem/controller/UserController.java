@@ -1,7 +1,7 @@
 package edu.miu.bankingsystem.controller;
 
 
-import edu.miu.bankingsystem.domian.Users;
+import edu.miu.bankingsystem.domain.Users;
 import edu.miu.bankingsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
@@ -22,7 +23,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("get/{id}")
+    @GetMapping("/get/{id}")
 
     public Users getAUserById(@PathVariable long id){
         return userService.getAUserById(id);
@@ -43,5 +44,15 @@ public class UserController {
 
     public void updateAUser(@PathVariable long id, @RequestBody Users user){
         userService.updateAUser(id, user);
+    }
+
+    @GetMapping("/viewBalance/{customerID}")
+    public Double viewBalance(@PathVariable long customerID){
+        return userService.viewBalance(customerID);
+
+    }
+    @GetMapping("/filter/{id}")
+    public double viewSavingOrCheckingBalance(@PathVariable long id, @RequestParam(value = "value") String accountType){
+        return userService.viewSavingOrCheckingBalance(id, accountType);
     }
 }

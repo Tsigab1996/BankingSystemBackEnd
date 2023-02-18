@@ -1,4 +1,4 @@
-package edu.miu.bankingsystem.domian;
+package edu.miu.bankingsystem.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

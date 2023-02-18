@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.service.imp;
 
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Transaction;
 import edu.miu.bankingsystem.repository.TransactionRepo;
 import edu.miu.bankingsystem.service.TransactionService;
 import org.springframework.stereotype.Service;
@@ -37,9 +37,21 @@ public class TransactionServiceImp implements TransactionService {
 
     @Override
     public Transaction updateATransaction(long id, Transaction transaction) {
-     Transaction trans= new Transaction();
-     trans.setId(id);
+     Transaction trans= getATransactionById(id);
+     trans.setTransactionType(transaction.getTransactionType());
+     trans.setTransactionDate(transaction.getTransactionDate());
+     trans.setAccount(transaction.getAccount());
+     trans.setAmount(transaction.getAmount());
      Transaction newTrans= transactionRepo.save(trans);
      return newTrans;
     }
+
+
+
+    @Override
+    public List<Transaction> getAllTransactionsByUserByAccount(long a, long b) {
+        return transactionRepo.getAllTransactionsByUserByAccount(a,b);
+    }
+
+
 }

@@ -1,6 +1,6 @@
 package edu.miu.bankingsystem.controller;
 
-import edu.miu.bankingsystem.domian.Transaction;
+import edu.miu.bankingsystem.domain.Transaction;
 import edu.miu.bankingsystem.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/transactions")
+@CrossOrigin
 public class TransactionController {
 
     private final TransactionService transactionService;
@@ -42,5 +43,11 @@ public class TransactionController {
 
     public void updateATransaction(@PathVariable long id, @RequestBody Transaction transaction){
         transactionService.updateATransaction(id, transaction);
+    }
+
+
+    @GetMapping("/{a}/account/{b}/viewTransactions")
+    public List<Transaction> getAllTransactionsByUserByAccount(@PathVariable long a, @PathVariable long b){
+        return transactionService.getAllTransactionsByUserByAccount(a,b);
     }
 }
