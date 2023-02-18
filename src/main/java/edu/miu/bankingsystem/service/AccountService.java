@@ -10,6 +10,8 @@ public interface AccountService {
   public void saveAnAccount(Account account);
   public void deleteAnAccount(long id);
   public Account updateAnAccount(long id, Account account);
+  public Account withdrawFromAccountById(long id, double amount);
+  public Account depositIntoAccountById(long id, double amount);
 
 
 }

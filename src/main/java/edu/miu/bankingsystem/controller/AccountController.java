@@ -44,20 +44,12 @@ public class AccountController {
     public void updateAnAccount(@PathVariable long id, @RequestBody Account account){
         accountService.updateAnAccount(id, account);
     }
-    @PostMapping("/withdraw/{accountId}")
-    public Account withdrawFromAccountById(@PathVariable  long accountId,@RequestParam(value = "amount") Double amount){
-        Account a = accountService.getAnAccountByID(accountId);
-        a.setBalance(a.getBalance() - amount);
-        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "withdraw", a));
-        accountService.saveAnAccount(a);
-        return a;
+    @PostMapping("/withdraw/{id}")
+    public Account withdrawFromAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
+      return accountService.withdrawFromAccountById(id, amount);
     }
-    @PostMapping("/deposit/{accountId}/{amount}")
-    public Account depositIntoAccountById(@PathVariable  long accountId,@RequestParam(value = "amount") Double amount){
-        Account a = accountService.getAnAccountByID(accountId);
-        a.setBalance(a.getBalance() + amount);
-        a.getTransactions().add(new Transaction( LocalDate.now(), amount, "deposit", a));
-        accountService.saveAnAccount(a);
-        return a;
+    @PostMapping("/deposit/{id}")
+    public Account depositIntoAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
+        return accountService.depositIntoAccountById(id,amount);
     }
 }
