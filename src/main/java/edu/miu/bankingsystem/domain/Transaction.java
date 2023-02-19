@@ -25,11 +25,5 @@ public class Transaction {
     @JsonBackReference
     private Account account;
 
-    //This is a parameterized constructor.....
-    public Transaction( LocalDate local, Double amount, String withdraw, Account a) {
-        this.transactionDate=local;
-        this.amount=amount;
-        this.transactionType=withdraw;
-        this.account=a;
-    }
+
 }

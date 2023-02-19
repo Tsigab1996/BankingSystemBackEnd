@@ -50,4 +50,10 @@ public class TransactionController {
     public List<Transaction> getAllTransactionsByUserByAccount(@PathVariable long a, @PathVariable long b){
         return transactionService.getAllTransactionsByUserByAccount(a,b);
     }
+
+    @GetMapping("/transactions/{id}")
+    public List<Transaction> getAllTransactions(@PathVariable long id){
+       return transactionService.findAllByAccount_Id(id);
+    }
+
 }

@@ -46,13 +46,20 @@ public class UserController {
         userService.updateAUser(id, user);
     }
 
-    @GetMapping("/viewBalance/{customerID}")
-    public Double viewBalance(@PathVariable long customerID){
-        return userService.viewBalance(customerID);
 
-    }
     @GetMapping("/filter/{id}")
     public double viewSavingOrCheckingBalance(@PathVariable long id, @RequestParam(value = "value") String accountType){
         return userService.viewSavingOrCheckingBalance(id, accountType);
+    }
+
+
+    @GetMapping("/customers")
+    public List<Users> getAllCustomers(){
+        return userService.getAllCUstomers();
+    }
+
+    @GetMapping("/bankers")
+    public List<Users> getOwners(){
+        return userService.getAllEmployees();
     }
 }

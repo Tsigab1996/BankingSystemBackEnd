@@ -15,8 +15,10 @@ public interface UserService {
     public Users updateAUser(long id, Users user);
 
 
-    public Double viewBalance(long id);
+
     public double viewSavingOrCheckingBalance(long id, String accountType);
 
+    public List<Users> getAllCUstomers();
+    public List<Users> getAllEmployees();
 
 }

@@ -52,13 +52,7 @@ public class UserServiceImp implements UserService {
     return newUser;
     }
 
-    @Override
-    public Double viewBalance(long id) {
-        Optional<Users> c = userRepo.findById(id);
-        List<Account> customerAcc = c.get().getAccounts();
-        double sumBalance= customerAcc.stream().map(b->b.getBalance()).mapToDouble(s -> s).sum();
-        return sumBalance;
-    }
+
 
     @Override
     public double viewSavingOrCheckingBalance(long id, String accountType) {
@@ -72,6 +66,16 @@ public class UserServiceImp implements UserService {
             }
         }
         return totalSavingBalance;
+    }
+
+    @Override
+    public List<Users> getAllCUstomers() {
+        return userRepo.getAllCUstomers();
+    }
+
+    @Override
+    public List<Users> getAllEmployees() {
+        return userRepo.getAllEmployees();
     }
 
 
