@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository<Users, Long> {
 
-
+    Users findByEmail(String email);
     //This is to find all customers
     @Query(value = "select u from Users u join u.role r where r.roleName='CUSTOMER'")
     public List<Users> getAllCUstomers();

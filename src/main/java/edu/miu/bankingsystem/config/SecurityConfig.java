@@ -1,19 +1,20 @@
 package edu.miu.bankingsystem.config;
 
 
+
 import edu.miu.bankingsystem.filter.JwtFilter;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,10 +23,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+
 public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
-
 
     @Bean
     public UserDetailsService userDetailsSvc() {
@@ -41,10 +42,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf().disable().cors().and()
-                .authorizeHttpRequests()
-                .requestMatchers("/api/v1/authenticate/**").permitAll()
-                .requestMatchers("/api/v1/users").hasAuthority("ADMIN")
+                .csrf().disable().cors().and().authorizeHttpRequests()
+                .requestMatchers("/api/v1/authenticate/**").permitAll() //.antMatchers before
+                .requestMatchers("/api/v1/users/**").hasAnyAuthority("ADMIN","BANKER","CUSTOMER")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -58,7 +58,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
+        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**"); //.antMatchers before
     }
 
     @Bean
