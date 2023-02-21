@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -17,13 +18,15 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate transactionDate;
+    private LocalTime transactionTime;
     private double amount;
     private String transactionType;
-
+    private double transactionBalance;
 
     @ManyToOne
     @JsonBackReference
     private Account account;
+
 
 
 }

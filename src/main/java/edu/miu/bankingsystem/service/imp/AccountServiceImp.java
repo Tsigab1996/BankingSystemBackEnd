@@ -7,6 +7,8 @@ import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -53,7 +55,7 @@ public class AccountServiceImp implements AccountService {
     public Account withdrawFromAccountById(long id, double amount) {
         Account a = getAnAccountByID(id);
         a.setBalance(a.getBalance() - amount);
-        a.getTransactions().add(new Transaction( value,LocalDate.now(), amount, "withdraw", a));
+        a.getTransactions().add(new Transaction( value,LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "withdraw",  a.getBalance(),a));
         value++;
         saveAnAccount(a);
         return a;
@@ -64,7 +66,7 @@ public class AccountServiceImp implements AccountService {
 
         Account a = getAnAccountByID(id);
         a.setBalance(a.getBalance() + amount);
-        a.getTransactions().add(new Transaction(value, LocalDate.now(), amount, "deposit", a));
+        a.getTransactions().add(new Transaction( value,LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), amount, "withdraw", a.getBalance(),a));
         value++;
         saveAnAccount(a);
         return a;
