@@ -3,7 +3,6 @@ package edu.miu.bankingsystem.config;
 
 
 import edu.miu.bankingsystem.filter.JwtFilter;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +43,7 @@ public class SecurityConfig {
         http
                 .csrf().disable().cors().and().authorizeHttpRequests()
                 .requestMatchers("/api/v1/authenticate/**").permitAll() //.antMatchers before
-                .requestMatchers("/api/v1/users/**").hasAnyAuthority("ADMIN","BANKER","CUSTOMER")
+                .requestMatchers("/api/v1/users/**").hasAnyAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
