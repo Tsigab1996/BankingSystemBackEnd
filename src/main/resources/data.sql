@@ -51,31 +51,31 @@ VALUES(6, '0454524', 'checking', 20000, '2017-8-12', 6);
 
 -- THIS IS TRANSACTION DATA
 
-INSERT INTO transaction(id, amount, transaction_date,  transaction_type, account_id)
-VALUES(1,400,'2023-4-5',  'deposit', 1);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(1, 400,'2023-4-5', '22:20:03',  'deposit', 80400, 1);
 
-INSERT INTO transaction(id, amount, transaction_date, transaction_type, account_id)
-VALUES(2,600,'2023-2-5',  'withdrawal', 1);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(2,600,'2023-2-5', '20:37:03', 'withdrawal',79800, 1);
 
-INSERT INTO transaction(id, amount, transaction_date,  transaction_type, account_id)
-VALUES(3,800,'2020-4-5', 'deposit', 2);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(3,800,'2020-4-5', '22:24:54', 'deposit', 60800, 2);
 
-INSERT INTO transaction(id, amount, transaction_date, transaction_type, account_id)
-VALUES(4,400,'2022-1-12',  'withdrawal', 2);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(4,400,'2022-1-12', '18:19:43', 'withdrawal', 60400, 2);
 
-INSERT INTO transaction(id, amount, transaction_date, transaction_type, account_id)
-VALUES(5,1000,'2021-2-14',  'deposit', 3);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(5,1000,'2021-2-14','12:26:33',  'deposit', 71000, 3);
 
-INSERT INTO transaction(id, amount, transaction_date,  transaction_type, account_id)
-VALUES(6,200,'2023-2-1',  'deposit', 4);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(6,200,'2023-2-1', '10:10:03', 'deposit',50200 ,4);
 
-INSERT INTO transaction(id, amount, transaction_date, transaction_type, account_id)
-VALUES(7,300,'2023-12-5',  'deposit', 4);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(7,300,'2023-12-5', '13:19:03', 'deposit',50500, 4);
 
-INSERT into transaction(id, amount, transaction_date,  transaction_type, account_id)
-VALUES(8,400,'2022-9-5',  'withdraw', 5);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(8,400,'2022-9-5', '23:17:03', 'withdraw',29600, 5);
 
-INSERT into transaction(id, amount, transaction_date,  transaction_type, account_id)
-VALUES(9,500,'2023-4-2',  'deposit', 6);
+INSERT INTO transaction(id, amount, transaction_date, transaction_time,  transaction_type, transaction_balance, account_id)
+VALUES(9,500,'2023-4-2', '21:35:03', 'deposit',20500, 6);
 
 
