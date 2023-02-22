@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/authenticate")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin()
 public class AuthController {
 
     private final AuthService authService;
@@ -29,9 +29,9 @@ public class AuthController {
                 loginResponse, HttpStatus.OK);
     }
 
-    @PostMapping("/refreshToken")
-    public LoginResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest){
-        return authService.refreshToken(refreshTokenRequest);
-    }
+//    @PostMapping("/refreshToken")
+//    public LoginResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest){
+//        return authService.refreshToken(refreshTokenRequest);
+//    }
 
 }

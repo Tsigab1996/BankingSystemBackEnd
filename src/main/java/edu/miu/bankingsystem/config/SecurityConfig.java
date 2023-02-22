@@ -19,6 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.imageio.plugins.jpeg.JPEGImageReadParam;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -43,7 +45,9 @@ public class SecurityConfig {
         http
                 .csrf().disable().cors().and().authorizeHttpRequests()
                 .requestMatchers("/api/v1/authenticate/**").permitAll() //.antMatchers before
-                .requestMatchers("/api/v1/users/**").hasAnyAuthority("ADMIN")
+                .requestMatchers("/api/v1/users/**").permitAll()
+                .requestMatchers("/api/v1/accounts/**").permitAll()
+                .requestMatchers("/api/v1/transactions/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

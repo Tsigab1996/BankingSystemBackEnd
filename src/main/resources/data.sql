@@ -12,10 +12,10 @@ VALUES(3,'CUSTOMER');
 
 
 INSERT INTO users(id, first_name, last_name, phone_number, email, password, role_id)
-VALUES(1,'Tsigab', 'Berhe','456 454 4752','tsigab@gmail.com', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 1);
+VALUES(100,'Tsigab', 'Berhe','456 454 4752','tsigab@gmail.com', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 1);
 
 INSERT INTO users(id, first_name, last_name, phone_number, email, password, role_id)
-VALUES(2,'Diana', 'Tesfay','315 543 6168','moses@gmail.com', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 2);
+VALUES(2,'Diana', 'Tesfay','315 543 6168','diana@gmail.com', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 2);
 
 INSERT INTO users(id, first_name, last_name, phone_number, email, password, role_id)
 VALUES(3,'Daniel','Meresie', '526 527 4522','daniel@gmail.com', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 2);

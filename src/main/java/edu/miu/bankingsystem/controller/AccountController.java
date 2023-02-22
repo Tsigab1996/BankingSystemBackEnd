@@ -1,11 +1,13 @@
 package edu.miu.bankingsystem.controller;
 
 import edu.miu.bankingsystem.domain.Account;
-import edu.miu.bankingsystem.domain.Transaction;
+
+import edu.miu.bankingsystem.domain.dto.request.DepositDto;
+import edu.miu.bankingsystem.domain.dto.request.WithdrawDto;
 import edu.miu.bankingsystem.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 @RestController
@@ -29,7 +31,7 @@ public class AccountController {
         return accountService.getAnAccountByID(id);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public void saveAnAccount(@RequestBody Account account){
         accountService.saveAnAccount(account);
     }
@@ -45,11 +47,13 @@ public class AccountController {
         accountService.updateAnAccount(id, account);
     }
     @PostMapping("/withdraw/{id}")
-    public Account withdrawFromAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
-      return accountService.withdrawFromAccountById(id, amount);
+    public Account withdrawFromAccountById(@PathVariable  long id, @RequestBody WithdrawDto amount){
+      return accountService.withdrawFromAccountById(id, amount.getAmount());
     }
     @PostMapping("/deposit/{id}")
-    public Account depositIntoAccountById(@PathVariable  long id,@RequestParam(value = "value") double amount){
-        return accountService.depositIntoAccountById(id,amount);
+    public Account depositIntoAccountById(@PathVariable  long id, @RequestBody DepositDto amount){
+        System.out.println(amount);
+        return accountService.depositIntoAccountById(id,amount.getAmount());
+
     }
 }

@@ -19,6 +19,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -41,29 +43,31 @@ public class AuthServiceImpl implements AuthService {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(result.getName());
+       var role= userDetails.getAuthorities();
 
         final String accessToken = jwtUtil.generateToken(userDetails);
         final String refreshToken = jwtUtil.generateRefreshToken(loginRequest.getEmail());
-        var loginResponse = new LoginResponse(accessToken, refreshToken);
+        var loginResponse = new LoginResponse(accessToken, refreshToken, role.stream().map(a->a.getAuthority()).collect(Collectors.toList()));
         return loginResponse;
     }
 
-    @Override
-    public LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
-        boolean isRefreshTokenValid = jwtUtil.validateToken(refreshTokenRequest.getRefreshToken());
-        if (isRefreshTokenValid) {
-            // TODO (check the expiration of the accessToken when request sent, if the is recent according to
-            //  issue Date, then accept the renewal)
-            var isAccessTokenExpired = jwtUtil.isTokenExpired(refreshTokenRequest.getAccessToken());
-            if(isAccessTokenExpired)
-                System.out.println("ACCESS TOKEN IS EXPIRED"); // TODO Renew is this case
-            else
-                System.out.println("ACCESS TOKEN IS NOT EXPIRED");
-            final String accessToken = jwtUtil.doGenerateToken(  jwtUtil.getSubject(refreshTokenRequest.getRefreshToken()));
-            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
-            // TODO (OPTIONAL) When to renew the refresh token?
-            return loginResponse;
-        }
-        return new LoginResponse();
-    }
+  //  @Override
+//    public LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+//        boolean isRefreshTokenValid = jwtUtil.validateToken(refreshTokenRequest.getRefreshToken());
+//        if (isRefreshTokenValid) {
+//            // TODO (check the expiration of the accessToken when request sent, if the is recent according to
+//            //  issue Date, then accept the renewal)
+//            var isAccessTokenExpired = jwtUtil.isTokenExpired(refreshTokenRequest.getAccessToken());
+//            if(isAccessTokenExpired)
+//                System.out.println("ACCESS TOKEN IS EXPIRED"); // TODO Renew is this case
+//            else
+//                System.out.println("ACCESS TOKEN IS NOT EXPIRED");
+//            var sth= userDetails.getAuthorities();
+//            final String accessToken = jwtUtil.doGenerateToken(  jwtUtil.getSubject(refreshTokenRequest.getRefreshToken()));
+//            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken(), sth.stream().map(a->a.getAuthority()).collect(Collectors.toList()));
+//            // TODO (OPTIONAL) When to renew the refresh token?
+//            return loginResponse;
+//        }
+//        return new LoginResponse();
+//    }
 }

@@ -1,6 +1,8 @@
 package edu.miu.bankingsystem.util;
 
+import edu.miu.bankingsystem.domain.Users;
 import io.jsonwebtoken.*;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

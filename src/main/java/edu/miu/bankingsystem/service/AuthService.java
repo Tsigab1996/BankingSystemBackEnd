@@ -7,5 +7,5 @@ import edu.miu.bankingsystem.domain.dto.response.LoginResponse;
 
 public interface AuthService {
     LoginResponse login(LoginRequest loginRequest);
-    LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
+    //LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 }
